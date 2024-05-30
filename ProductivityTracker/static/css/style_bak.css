@@ -1,0 +1,170 @@
+
+.red-half {
+    height: 50vh; /* 50% of the viewport height */
+    display: flex;
+    /* background-color: red; */
+}
+
+.left-section {
+    width: 40%; /* 40% width of the red half */
+    background-color: white; 
+    position: relative;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}
+
+.right-section {
+    width: 60%; /* 60% width of the red half */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: white;
+    padding: 20px; /* Add padding for better appearance */
+    box-sizing: border-box;
+}
+
+.green-half {
+    height: 50vh; /* 50% of the viewport height */
+    display: flex;
+}
+
+.pink-section {
+    width: 60%;
+    background-color: pink;
+    /* background-color: #C06E52; */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add padding for better appearance */
+}
+
+.orange-section {
+    width: 40%;
+    background-color: orange;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative;
+}
+
+.floating-card {
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.progress-circle {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    border: 10px solid #ffffff;
+    border-radius: 50%;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: 10px solid red; /* Set progress bar color */
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom-color: transparent;
+    transform: rotate(calc(100% * var(--percentage) / 2));
+    transform-origin: center;
+}
+
+.progress-circle::after {
+    content: attr(data-progress) "%";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: green;
+}
+
+blockquote {
+    border-left: none;
+}
+
+.quote-badge {
+    background-color: rgba(0, 0, 0, 0.2);   
+}
+
+.quote-box {
+    overflow: hidden;
+    border-radius: 17px;
+    background-color: #4ADFCC;
+    color: white;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+    padding: 20px;
+}
+
+.quotation-mark {
+    font-weight: bold;
+    font-size: 100px;
+    color: white;
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+.quote-text {
+    font-size: 19px;
+    margin-top: -65px;
+}
+
+.blog-post-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.greeting {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.task-bar {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.task-date {
+    font-size: 14px;
+    color: gray;
+}
+
+.task-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-button:hover {
+    background-color: #0056b3;
+}
+
+.tasks-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

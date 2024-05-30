@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="red-half">
+    <div class="left-section">
+        <div class="progress-circle" id="progress-circle" style="--percentage: 0;" data-progress="0"></div>
+    </div>
+    <div class="right-section">
+        <div>
+            <p class="greeting">How are you, {{ user.username }}?</p>
+            <blockquote class="quote-box">
+                <p class="quotation-mark">“</p>
+                <p class="quote-text">
+                    Don't believe anything that you read on the internet, it may be fake.
+                </p>
+                <hr>
+                <div class="blog-post-actions">
+                    <p class="blog-post-bottom">
+                        Abraham Lincoln
+                    </p>
+                    <p class="blog-post-bottom">
+                        <span class="badge quote-badge">896</span>  ❤
+                    </p>
+                </div>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<div class="green-half">
+    <div class="pink-section">
+        <h3 class="tasks-title">In-Progress</h3>
+        <div class="task-bar">
+            <div>
+                <div class="task-title">Task 1</div>
+                <div class="task-date">2024-05-27</div>
+            </div>
+            <button class="task-button">View</button>
+        </div>
+        <div class="task-bar">
+            <div>
+                <div class="task-title">Task 2</div>
+                <div class="task-date">2024-05-27</div>
+            </div>
+            <button class="task-button">View</button>
+        </div>
+        <div class="task-bar">
+            <div>
+                <div class="task-title">Task 3</div>
+                <div class="task-date">2024-05-27</div>
+            </div>
+            <button class="task-button">View</button>
+        </div>
+        <!-- Add more task bars as needed -->
+    </div>
+    <div class="orange-section">
+        <div class="floating-card">
+            This is a floating card in the orange section.
+        </div>
+    </div>
+</div>
+{% endblock %}
