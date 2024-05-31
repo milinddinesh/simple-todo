@@ -1,34 +1,15 @@
-$(document).ready(function() {
-    $.ajax({
-        url: '/task/completion_percentage/',
-        method: 'GET',
-        success: function(data) {
-            var percentage = data.completion_percentage;
-            $('.progress').attr('data-value', percentage);
-            updateProgressBar(percentage);
-        },
-        error: function(xhr, status, error) {
-            console.error("Error fetching completion percentage:", error);
-        }
-    });
+// const progressBar = document.querySelector('.progress-bar');
+// const progressValue = document.querySelector('.progress-value');
 
-    function updateProgressBar(value) {
-        var left = $('.progress-left .progress-bar');
-        var right = $('.progress-right .progress-bar');
+// function updateProgress() {
+//   fetch('/task/completion_percentage/')  // Replace with your actual API endpoint URL
+//     .then(response => response.json())
+//     .then(data => {
+//       const percentage = Math.round(data.completion_percentage);  // Round the percentage
+//       progressValue.textContent = `${percentage}%`;
+//       progressBar.style.transform = `rotate(${percentage * 1.8}deg)`;
+//     })
+//     .catch(error => console.error('Error fetching progress:', error));
+// }
 
-        if (value > 0) {
-            if (value <= 50) {
-                right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)');
-            } else {
-                right.css('transform', 'rotate(180deg)');
-                left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)');
-            }
-        }
-
-        $('.progress-value .h2').text(value + '%');
-    }
-
-    function percentageToDegrees(percentage) {
-        return percentage / 100 * 360;
-    }
-});
+// updateProgress();  // Call initially to set the progress
