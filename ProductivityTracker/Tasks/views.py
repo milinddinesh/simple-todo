@@ -4,9 +4,6 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import status
-# from myapp.serializers import UserSerializer
-# from rest_framework import generics
-# from django.contrib.auth.models import User
 from rest_framework import permissions
 from myapp.permissions import IsOwnerOrReadOnly
 
@@ -38,4 +35,10 @@ class TaskViewSet(viewsets.ModelViewSet):
             percentage_completed = (completed_tasks / total_tasks) * 100
 
         return Response({'completion_percentage': percentage_completed}, status=status.HTTP_200_OK)
+    
+    @action(detail=False, methods=['get'])
+    def in_progress(self, request):
+        in_progress_tasks = Task.objects.filter(owner=self.request.user, progress_status=Task.IN_PROGRESS)
+        serializer = TaskSerializer(in_progress_tasks, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
