@@ -132,3 +132,12 @@ function getCookie(name) {
     return cookieValue;
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    var dateInput = document.querySelector('input[type="date"]');
+    dateInput.addEventListener('change', function () {
+        var dateValue = this.value;
+        var formattedDate = new Date(dateValue).toISOString().split('T')[0];
+        this.value = formattedDate;
+    });
+});
+
