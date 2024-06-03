@@ -92,12 +92,6 @@ function updateProgressBar(percentage) {
 document.querySelector('.button-green').addEventListener('click', function() {
     let hiddenInput = document.getElementById('hidden-id');
     let currentId = parseInt(hiddenInput.value);
-
-    // if (isNaN(currentId)) {
-    //     currentId = 0;
-    // }
-
-    // Send a POST request to the increment_days endpoint
     fetch(`/streak/${currentId}/increment_days/`, {
         method: 'POST',
         headers: {
@@ -141,3 +135,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+const taskButtons = document.querySelectorAll('.task-button');
+
+taskButtons.forEach(button => {
+  button.addEventListener('click', async () => {
+    const hiddenInput = button.parentElement.querySelector('#hidden-id');
+    const taskId = hiddenInput.value;
+    window.location.href = `/task/update/${taskId}`;
+  });
+});
