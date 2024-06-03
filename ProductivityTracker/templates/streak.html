@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="streak-manage-container">
+    <button type="button" class="btn btn-primary create-button" >Create</button>
+</div>
+<div class="streak-container">
+    {% for streak in streaks %}
+    <div class="task-bar">
+        <div>
+            <div class="task-title">{{ task.title }}</div>
+        </div>
+        <button class="task-button">View</button>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
