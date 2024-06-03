@@ -3,10 +3,13 @@ from django.shortcuts import render
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from Tasks.models import Task
 from Streaks.models import Streak
+from Tasks.forms import CreateTaskForm
+from django.urls import reverse_lazy
+
 
 # Create your views here.
 
@@ -46,4 +49,12 @@ class TaskView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = Task.objects.filter(owner=self.request.user)  # Adjust the filter if needed
+        return context
+    
+class StreakView(LoginRequiredMixin,TemplateView):
+    template_name = 'streak.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['streaks'] = Streak.objects.filter(owner=self.request.user)  # Adjust the filter if needed
         return context
