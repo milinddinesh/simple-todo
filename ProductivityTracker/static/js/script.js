@@ -29,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('DOMContentLoaded', function () {
     const rightButton = document.querySelector('.right-button img');
     const hiddenIdInput = document.getElementById('hidden-id');
-    const taskTitle = document.getElementsByClassName('streak-title');
-    const streakInfo = document.getElementsByClassName('streak-info p');
+    // const taskTitle = document.getElementByClassName('streak-title');
+    const taskTitle = document.querySelector('.streak-title')
+    const streakInfo = document.querySelector('.streak-info p');
     if (isNaN(parseInt(hiddenIdInput.value, 10))) {
         hiddenIdInput.value = 0;
     }
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 // Update the HTML elements with the new data
                 taskTitle.textContent = data.title;
+                console.log(data.title);
                 streakInfo.textContent = data.days;
                 hiddenIdInput.value = data.id;
             })
@@ -86,3 +88,47 @@ function updateProgressBar(percentage) {
 
     progressValueElement.textContent = `${percentage}%`;
 }
+
+document.querySelector('.button-green').addEventListener('click', function() {
+    let hiddenInput = document.getElementById('hidden-id');
+    let currentId = parseInt(hiddenInput.value);
+
+    if (isNaN(currentId)) {
+        currentId = 0;
+    }
+
+    // Send a POST request to the increment_days endpoint
+    fetch(`/streak/${currentId}/increment_days/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')  // Ensure you handle CSRF token
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.days !== undefined) {
+            document.querySelector('.streak-info p').textContent = `${data.days}`;
+        } else {
+            console.error('Invalid response data:', data);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
