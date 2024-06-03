@@ -66,4 +66,6 @@
     border-radius: 8px;
 }
 
-
+#hidden-id {
+    display: none;  /* Hide the hidden input field */
+  }

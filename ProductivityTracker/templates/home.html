@@ -43,9 +43,12 @@
             <div>
                 <div class="task-title">{{ task.title }}</div>
                 <div class="task-date">{{ task.due_date }}</div>
+
             </div>
             <button class="task-button">View</button>
+            <input type="hidden" id="hidden-id" value="{{ task.id  }}">
         </div>
+        
         {% endfor %}
     </div>
 
@@ -68,7 +71,8 @@
         </div>
         <div class="right-button">
             <img src="{% static 'icons/next.png' %}" alt="">
-            <input type="hidden" id="hidden-id" value="{{ streak.id  }}"> </div>
+            <input type="hidden" id="hidden-sid" value="{{ streak.id  }}"> 
+        </div>
     </div>
     
 </div>

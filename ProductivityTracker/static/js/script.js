@@ -26,33 +26,71 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error fetching quote:', error));
 });
 
-// document.addEventListener('DOMContentLoaded', function () {
-//     const rightButton = document.querySelector('.right-button img');
-//     const hiddenIdInput = document.getElementById('hidden-id');
-//     // const taskTitle = document.getElementByClassName('streak-title');
-//     const taskTitle = document.querySelector('.streak-title')
-//     const streakInfo = document.querySelector('.streak-info p');
-//     // if (isNaN(parseInt(hiddenIdInput.value, 10))) {
-//     //     hiddenIdInput.value = 0;
-//     // }
-//     rightButton.addEventListener('click', function () {
-//         let id = parseInt(hiddenIdInput.value, 10);
-//         id += 1
+const rightButtonImage = document.querySelector('.right-button img');
 
-//         fetch(`/streak/${id}`)
-//             .then(response => response.json())
-//             .then(data => {
-//                 // Update the HTML elements with the new data
-//                 taskTitle.textContent = data.title;
-//                 console.log(data.title);
-//                 streakInfo.textContent = data.days;
-//                 hiddenIdInput.value = data.id;
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching data:', error);
-//             });
-//     });
-// });
+rightButtonImage.addEventListener('click', function() {
+  // Get the hidden input field and extract the ID
+  const hiddenInput = document.querySelector('#hidden-sid');
+  const streakId = hiddenInput.value;
+
+  // Increment the ID by 1 before sending the request
+  const incrementedId = parseInt(streakId, 10) + 1;
+
+  // Construct the API URL with the incremented ID
+  const apiUrl = `/streak/${incrementedId}`;
+
+  // Send the GET request to the API using Fetch API
+  fetch(apiUrl)
+    .then(response => response.json())  // Parse the JSON response
+    .then(data => {
+      // Update the HTML with the retrieved data
+      const streakTitleElement = document.querySelector('.streak-title');
+      const streakDaysElement = document.querySelector('.streak-info p');
+      const input = document.querySelector('#hidden-sid');
+      input.value = data.id;
+      streakTitleElement.textContent = data.title;
+      streakDaysElement.textContent = data.days;
+      
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Handle errors gracefully, e.g., display an error message to the user
+    });
+});
+
+
+const leftButtonImage = document.querySelector('.left-button img');
+
+leftButtonImage.addEventListener('click', function() {
+  // Get the hidden input field and extract the ID
+  const hiddenInput = document.querySelector('#hidden-sid');
+  const streakId = hiddenInput.value;
+
+  // Increment the ID by 1 before sending the request
+  const incrementedId = parseInt(streakId, 10) - 1;
+
+  // Construct the API URL with the incremented ID
+  const apiUrl = `/streak/${incrementedId}`;
+
+  // Send the GET request to the API using Fetch API
+  fetch(apiUrl)
+    .then(response => response.json())  // Parse the JSON response
+    .then(data => {
+      // Update the HTML with the retrieved data
+      const streakTitleElement = document.querySelector('.streak-title');
+      const streakDaysElement = document.querySelector('.streak-info p');
+      const input = document.querySelector('#hidden-sid');
+      input.value = data.id;
+      streakTitleElement.textContent = data.title;
+      streakDaysElement.textContent = data.days;
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      // Handle errors gracefully, e.g., display an error message to the user
+    });
+});
+
+
 
 
 function updateProgressBar(percentage) {
@@ -90,7 +128,7 @@ function updateProgressBar(percentage) {
 }
 
 document.querySelector('.button-green').addEventListener('click', function() {
-    let hiddenInput = document.getElementById('hidden-id');
+    let hiddenInput = document.getElementById('hidden-sid');
     let currentId = parseInt(hiddenInput.value);
     fetch(`/streak/${currentId}/increment_days/`, {
         method: 'POST',

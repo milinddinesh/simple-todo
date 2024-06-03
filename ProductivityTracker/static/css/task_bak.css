@@ -9,6 +9,10 @@
     background-color: lightblue;
 }
 
+.task{
+    
+}
+
 .task-manage-container{
     max-width: 800px; /* Adjust the max-width as per your requirement */
     margin: .5rem auto;   /* Center the container */
@@ -64,7 +68,3 @@
     width: 100px;
     border-radius: 8px;
 }
-
-#hidden-id {
-    display: none;  /* Hide the hidden input field */
-  }

@@ -12,7 +12,36 @@
             <div class="task-date">{{ task.due_date }}</div>
         </div>
         <button class="task-button">View</button>
+        <input type="hidden" id="hidden-id" value="{{ task.id  }}"> 
     </div>
     {% endfor %}
 </div>
+
+<script>
+const Buttons = document.querySelectorAll('.task-button');
+
+Buttons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Get the closest ancestor task-bar element
+    const taskBar = this.closest('.task-bar');
+
+    // Find the following sibling of the button (the hidden input)
+    const hiddenInput = taskBar.querySelector('.task-button + input[type="hidden"]');
+
+    // Extract the task ID from the hidden input value
+    const taskId = hiddenInput.value;
+
+    // Redirect to the update URL with the extracted task ID
+    window.location.href = `/task/update/${taskId}`;
+  });
+});
+
+const createButton = document.querySelector('.create-button');
+
+createButton.addEventListener('click', function() {
+  window.location.href = '/task/create/';
+});
+
+
+</script>
 {% endblock %}
