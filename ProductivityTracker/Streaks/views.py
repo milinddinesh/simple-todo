@@ -24,7 +24,3 @@ class StreakViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
-    # @action(detail=False, methods=['get'])
-    # def count(self, request):
-    #     task_count = Streak.objects.count()
-    #     return Response({'total_S': task_count}, status=status.HTTP_200_OK)

@@ -1,0 +1,304 @@
+/* body {
+  padding-bottom: 10px;
+} */
+.progress {
+    box-sizing: border-box;
+    background: none;
+    margin: 20px;
+    position: relative;
+    aspect-ratio: 1;
+    min-width: 200px;
+    min-height: 200px;
+  }
+  
+  .progress:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .progress > span {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .progress .progress-left {
+    left: 0;
+    background-color: white;
+  }
+  
+  .progress .progress-bar {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 12px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+    transition: transform 1.5s ease-out; /* Add smooth transition */
+  }
+  
+  .progress .progress-left .progress-bar {
+    left: 100%;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+  }
+  
+  .progress .progress-right {
+    right: 0;
+    background-color: white;
+  }
+  
+  .progress .progress-right .progress-bar {
+    left: -100%;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+  }
+  
+  .progress .progress-value {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    font-size: 24px;
+    color: black;
+    line-height: 135px;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 2;
+  }
+  
+  .progress-value {
+    color: black;
+    padding-top: 10px;
+    z-index: 2;
+  }
+  
+  .progress.blue .progress-bar {
+    border-color: #049dff;
+  }
+  
+  /* Animation Classes */
+  .animate-right {
+    transition: transform 1.5s ease-out;
+  }
+  
+  .animate-left {
+    transition: transform 1.5s ease-out 1.5s; /* Delay the left bar animation */
+  }
+  
+    /* Original CSS content below */
+    
+    .red-half {
+        height: 50vh; /* 50% of the viewport height */
+        display: flex;
+        /* background-color: red; */
+    }
+    
+    .left-section {
+        width: 40%; /* 40% width of the red half */
+        background-color: white; 
+        position: relative;
+        display: flex;
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+    }
+  
+    .left-section>p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: bold;
+      font-size: medium;
+    }
+    
+    .right-section {
+        width: 60%; /* 60% width of the red half */
+        display: flex;
+        align-items: center; /* Center items vertically */
+        justify-content: center; /* Center items horizontally */
+        background-color: white;
+        padding: 20px; /* Add padding for better appearance */
+        box-sizing: border-box;
+    }
+    
+    .green-half {
+        height: 50vh; /* 50% of the viewport height */
+        display: flex;
+    }
+    
+    .pink-section {
+        width: 60%;
+        background-color: pink;
+        /* background-color: #C06E52; */
+        overflow-y: auto; /* Enable vertical scrolling */
+        padding: 20px; /* Add padding for better appearance */
+    }
+    .orange-section {
+      width: 40%; /* Keep the original width */
+      background-color: white;
+      display: flex;
+      position: relative;
+      overflow: hidden; 
+      padding-bottom: 10px;
+  }
+  
+  .left-button, .right-button {
+      width: 15%; /* Each button takes up 20% of the width */
+      height: auto;
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+  }
+  
+  
+  
+  .floating-card {
+      width: 100%; /* Card takes up 60% of the width */
+      height: 100%; 
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      text-align: center;
+      overflow: hidden; /* Ensures that content doesn't overflow the card */
+      display: flex; /* Use flexbox */
+      flex-direction: column; /* Arrange children in a column */
+      justify-content: center; /* Center content vertically */
+      align-items: center; /* Center content horizontally */
+  }
+  .img-text {
+    height: 10%; /* Take up 20% of the card's height */
+    /* padding-top: 15px;  */
+    font: bold;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
+  .img-container {
+    height:80%;
+    width: 100%;
+    /* padding: 10px; */
+    flex: 1; /* Take up remaining space */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    background-color: lightblue; /* Optional: Add background color for visibility */
+  }
+  .img-container img {
+    max-width: 100%; /* Ensure the image fits inside the container */
+    max-height: 100%; /* Ensure the image fits inside the container */
+    object-fit: contain; /* Maintain aspect ratio and fit inside container */
+  }
+  
+  .streak-buttons {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      height: 15%;
+  }
+  
+  .button-red, .button-green {
+    width: 50%; /* Each button takes up 50% of the available width */
+    /* padding: 10px 20px; Add padding to buttons */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  
+  .button-red {
+    background-color: red; /* Set button background color to red */
+    color: white; /* Set text color to white */
+  }
+  
+  .button-green {
+    background-color: green; /* Set button background color to green */
+    color: white; /* Set text color to white */
+  }
+  
+  
+    blockquote {
+        border-left: none;
+    }
+    
+    .quote-badge {
+        background-color: rgba(0, 0, 0, 0.2);   
+    }
+    
+    .quote-box {
+        overflow: hidden;
+        border-radius: 17px;
+        background-color: #4ADFCC;
+        color: white;
+        box-shadow: 2px 2px 2px 2px #E0E0E0;
+        padding: 20px;
+    }
+    
+    .quotation-mark {
+        font-weight: bold;
+        font-size: 100px;
+        color: white;
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+    
+    .quote-text {
+        font-size: 19px;
+        margin-top: -65px;
+    }
+    
+    .blog-post-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .greeting {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .task-bar {
+        background-color: white;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .task-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    
+    .task-date {
+        font-size: 14px;
+        color: gray;
+    }
+    
+    .task-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .task-button:hover {
+        background-color: #0056b3;
+    }
+  

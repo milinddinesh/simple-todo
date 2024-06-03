@@ -3,6 +3,8 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+{% load static %}
+
 <div class="red-half">
     <div class="left-section">
         <!-- <div class="col-md-6">  -->
@@ -46,11 +48,34 @@
         </div>
         {% endfor %}
     </div>
-    
+
     <div class="orange-section">
+        <div class="left-button">
+            <img src="{% static 'icons/left.png' %}" alt="">
+        </div>
         <div class="floating-card">
-            This is a floating card in the orange section.
+            <div class="img-text">
+                <div class="streak-title">Task title</div>
+            </div>
+            <div class="img-container">
+                <img src="{% static 'icons/streak.png' %}" alt="Streak Image" class="floating-card-image">
+            </div>
+            <div class="streak-info">
+                <p>6/11 </p>
+            </div>
+            <div class="streak-buttons">
+                <button class="button-red">Delete</button>
+                <button class="button-green">Done</button>
+            </div>
+        </div>
+        <div class="right-button">
+            <img src="{% static 'icons/next.png' %}" alt="">
+            <input type="hidden" id="hidden-id" value="0">
         </div>
     </div>
+    
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {% endblock %}

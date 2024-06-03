@@ -26,6 +26,32 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error fetching quote:', error));
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    const rightButton = document.querySelector('.right-button img');
+    const hiddenIdInput = document.getElementById('hidden-id');
+    const taskTitle = document.getElementsByClassName('streak-title');
+    const streakInfo = document.getElementsByClassName('streak-info p');
+    if (isNaN(parseInt(hiddenIdInput.value, 10))) {
+        hiddenIdInput.value = 0;
+    }
+    rightButton.addEventListener('click', function () {
+        let id = parseInt(hiddenIdInput.value, 10);
+        id += 1
+
+        fetch(`/streak/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                // Update the HTML elements with the new data
+                taskTitle.textContent = data.title;
+                streakInfo.textContent = data.days;
+                hiddenIdInput.value = data.id;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    });
+});
+
 
 function updateProgressBar(percentage) {
     if (typeof percentage === 'undefined' || isNaN(percentage)) {
