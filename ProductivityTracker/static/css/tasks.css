@@ -1,0 +1,10 @@
+/* styles.css */
+.task-container {
+    max-width: 800px; /* Adjust the max-width as per your requirement */
+    margin: 0 auto;   /* Center the container */
+    padding: 20px;    /* Add padding for content spacing */
+    background-color: #fff; /* Background color to distinguish it from the body */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a lifted effect */
+    border-radius: 8px; /* Optional: Rounded corners */
+    height: 100%;
+}

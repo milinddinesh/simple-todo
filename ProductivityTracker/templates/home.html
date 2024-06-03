@@ -55,14 +55,12 @@
         </div>
         <div class="floating-card">
             <div class="img-text">
-                <div class="streak-title">Task title</div>
-            </div>
+                <div class="streak-title">{{ streak.title }}</div> </div>
             <div class="img-container">
                 <img src="{% static 'icons/streak.png' %}" alt="Streak Image" class="floating-card-image">
             </div>
             <div class="streak-info">
-                <p>6/11 </p>
-            </div>
+                <p>{{ streak.days }}</p> </div>
             <div class="streak-buttons">
                 <button class="button-red">Delete</button>
                 <button class="button-green">Done</button>
@@ -70,8 +68,7 @@
         </div>
         <div class="right-button">
             <img src="{% static 'icons/next.png' %}" alt="">
-            <input type="hidden" id="hidden-id" value="0">
-        </div>
+            <input type="hidden" id="hidden-id" value="{{ streak.id  }}"> </div>
     </div>
     
 </div>

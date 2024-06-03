@@ -26,33 +26,33 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error('Error fetching quote:', error));
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const rightButton = document.querySelector('.right-button img');
-    const hiddenIdInput = document.getElementById('hidden-id');
-    // const taskTitle = document.getElementByClassName('streak-title');
-    const taskTitle = document.querySelector('.streak-title')
-    const streakInfo = document.querySelector('.streak-info p');
-    if (isNaN(parseInt(hiddenIdInput.value, 10))) {
-        hiddenIdInput.value = 0;
-    }
-    rightButton.addEventListener('click', function () {
-        let id = parseInt(hiddenIdInput.value, 10);
-        id += 1
+// document.addEventListener('DOMContentLoaded', function () {
+//     const rightButton = document.querySelector('.right-button img');
+//     const hiddenIdInput = document.getElementById('hidden-id');
+//     // const taskTitle = document.getElementByClassName('streak-title');
+//     const taskTitle = document.querySelector('.streak-title')
+//     const streakInfo = document.querySelector('.streak-info p');
+//     // if (isNaN(parseInt(hiddenIdInput.value, 10))) {
+//     //     hiddenIdInput.value = 0;
+//     // }
+//     rightButton.addEventListener('click', function () {
+//         let id = parseInt(hiddenIdInput.value, 10);
+//         id += 1
 
-        fetch(`/streak/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                // Update the HTML elements with the new data
-                taskTitle.textContent = data.title;
-                console.log(data.title);
-                streakInfo.textContent = data.days;
-                hiddenIdInput.value = data.id;
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    });
-});
+//         fetch(`/streak/${id}`)
+//             .then(response => response.json())
+//             .then(data => {
+//                 // Update the HTML elements with the new data
+//                 taskTitle.textContent = data.title;
+//                 console.log(data.title);
+//                 streakInfo.textContent = data.days;
+//                 hiddenIdInput.value = data.id;
+//             })
+//             .catch(error => {
+//                 console.error('Error fetching data:', error);
+//             });
+//     });
+// });
 
 
 function updateProgressBar(percentage) {
@@ -93,9 +93,9 @@ document.querySelector('.button-green').addEventListener('click', function() {
     let hiddenInput = document.getElementById('hidden-id');
     let currentId = parseInt(hiddenInput.value);
 
-    if (isNaN(currentId)) {
-        currentId = 0;
-    }
+    // if (isNaN(currentId)) {
+    //     currentId = 0;
+    // }
 
     // Send a POST request to the increment_days endpoint
     fetch(`/streak/${currentId}/increment_days/`, {

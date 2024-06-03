@@ -28,6 +28,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
                 streak_data = {
                     'title': first_streak.title,
                     'days': first_streak.days,
+                    'id' : first_streak.id,
                     # Add other desired fields here
                 }
                 context['streak'] = streak_data
