@@ -5,10 +5,11 @@
     <button type="button" class="btn btn-primary create-button" >Create</button>
 </div>
 <div class="streak-container">
-    {% for streak in streaks %}
+    {% for task in streaks %}
     <div class="task-bar">
         <div>
             <div class="task-title">{{ task.title }}</div>
+            <div class="task-date">{{ task.days }}</div>
         </div>
         <button class="task-button">View</button>
     </div>
