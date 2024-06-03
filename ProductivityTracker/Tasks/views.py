@@ -8,37 +8,44 @@ from rest_framework import permissions
 from myapp.permissions import IsOwnerOrReadOnly
 
 class TaskViewSet(viewsets.ModelViewSet):
-    # queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-                      IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     
     def get_queryset(self):
+
         return Task.objects.filter(owner=self.request.user)
 
-    @action(detail=True, methods=['get'])
+    @action(detail=False, methods=['get'])
     def count(self, request):
-        task_count = Task.objects.filter(owner=self.request.user).count()
-        return Response({'total_tasks': task_count}, status=status.HTTP_200_OK)
+        try:
+            task_count = Task.objects.filter(owner=self.request.user).count()
+            return Response({'total_tasks': task_count}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
     @action(detail=False, methods=['get'])
     def completion_percentage(self, request):
-        total_tasks = Task.objects.filter(owner=self.request.user).count()
-        completed_tasks = Task.objects.filter(owner=self.request.user, progress_status=Task.DONE).count()
+        try:
+            total_tasks = Task.objects.filter(owner=self.request.user).count()
+            completed_tasks = Task.objects.filter(owner=self.request.user, progress_status=Task.DONE).count()
 
-        if total_tasks == 0:
-            percentage_completed = 0
-        else:
-            percentage_completed = (completed_tasks / total_tasks) * 100
+            if total_tasks == 0:
+                percentage_completed = 0
+            else:
+                percentage_completed = (completed_tasks / total_tasks) * 100
 
-        return Response({'completion_percentage': percentage_completed}, status=status.HTTP_200_OK)
-    
+            return Response({'completion_percentage': percentage_completed}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     @action(detail=False, methods=['get'])
     def in_progress(self, request):
-        in_progress_tasks = Task.objects.filter(owner=self.request.user, progress_status=Task.IN_PROGRESS)
-        serializer = TaskSerializer(in_progress_tasks, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-
+        try:
+            in_progress_tasks = Task.objects.filter(owner=self.request.user, progress_status=Task.IN_PROGRESS)
+            serializer = TaskSerializer(in_progress_tasks, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
