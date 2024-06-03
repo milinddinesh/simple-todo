@@ -24,3 +24,16 @@ class StreakViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    @action(detail=True, methods=['post'])
+    def increment_days(self, request, pk=None):
+        try:
+            streak = self.get_object()
+            if streak.owner != request.user:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+
+            streak.days += 1
+            streak.save()
+            return Response({'days': streak.days}, status=status.HTTP_200_OK)
+        except Streak.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
