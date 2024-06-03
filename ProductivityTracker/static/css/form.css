@@ -1,0 +1,53 @@
+/* Center the form container on the page */
+.form-container {
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add some padding inside the container */
+    background-color: #f9f9f9; /* Light grey background for the form */
+    border: 1px solid #ddd; /* Light border around the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style the form elements */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container form p {
+    margin-bottom: 20px; /* Add space between form elements */
+}
+
+.form-container label {
+    font-weight: bold; /* Make labels bold */
+    margin-bottom: 5px; /* Add space between label and input */
+}
+
+.form-container input, 
+.form-container textarea, 
+.form-container select {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Padding inside inputs */
+    margin-top: 5px; /* Space above inputs */
+    margin-bottom: 10px; /* Space below inputs */
+    border: 1px solid #ccc; /* Light grey border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.form-container button {
+    align-self: flex-end; /* Align the button to the right */
+    padding: 10px 20px; /* Padding inside the button */
+    font-size: 16px; /* Slightly larger font size */
+    color: #fff; /* White text */
+    background-color: #007bff; /* Bootstrap primary color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.form-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
