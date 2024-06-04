@@ -6,7 +6,7 @@ router = DefaultRouter()
 router.register(r'',UserViewSet)
 
 urlpatterns = [
-    path("home/",HomeView.as_view(), name='home'),
+    path("",HomeView.as_view(), name='home'),
     path("view/task/",TaskView.as_view(),name='view_task'),
     path('view/streak/',StreakView.as_view(),name='streak-view'),
     path('user/', include(router.urls)),
